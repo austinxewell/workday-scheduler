@@ -11,8 +11,8 @@
 
     var momentTime = moment().startOf("day").add(8, "hour");
     var hour = moment().format("H");
-    
-    for (var i = 0; i < 10; i++) {
+
+    setInterval(function() {for (var i = 0; i < 10; i++) {
         var timeSlot = momentTime.add(1, "hour").format("HH:mm A");
         var currentState;
 
@@ -41,23 +41,7 @@
         catch(error){ 
         }
         textareaEl[i].classList.add('past');
-    }
-
-    };
-
+    }}}, 3000);
 
     for (i = 0; i < 10; i++)
-    textareaEl[i].textContent = localStorage.getItem(i+9);
-
-
-
-
-//  WAYS IVE TRIED TO APPEND LOCAL STORAGE
-
-//    var data = JSON.parse(localStorage.getItem('time'));
-
-//    console.log(data);
-
-
-
-//    $(data).append(textareaEl);
+    textareaEl[i].value = localStorage.getItem(i+9);

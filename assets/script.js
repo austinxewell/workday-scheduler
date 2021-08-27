@@ -12,7 +12,8 @@
     var momentTime = moment().startOf("day").add(8, "hour");
     var hour = moment().format("H");
 
-    setInterval(function() {for (var i = 0; i < 10; i++) {
+    // setInterval(function() {
+         for (var i = 0; i < 10; i++) {
         var timeSlot = momentTime.add(1, "hour").format("HH:mm A");
         var currentState;
 
@@ -41,7 +42,11 @@
         catch(error){ 
         }
         textareaEl[i].classList.add('past');
-    }}}, 3000);
+
+    }};
+// }, 5000);
+
+
 
     for (i = 0; i < 10; i++)
     textareaEl[i].value = localStorage.getItem(i+9);

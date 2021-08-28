@@ -12,41 +12,37 @@
     var momentTime = moment().startOf("day").add(8, "hour");
     var hour = moment().format("H");
 
-    // setInterval(function() {
          for (var i = 0; i < 10; i++) {
         var timeSlot = momentTime.add(1, "hour").format("HH:mm A");
-        var currentState;
 
-    if (hour == i + 9) {
-        currentState = 'present';       
-        try {
-            textareaEl[i].classList.remove('future', 'past');
-        }
-        catch(error){ 
-        }
-        textareaEl[i].classList.add('present');
+    if (hour == i + 9) {     
+        // try {
+            // console.log(textareaEl[i].classList);
+            $(textareaEl[i]).removeClass('future', 'past');
+            $(textareaEl[i]).addClass('present');
+        // }
+        // catch(error){ 
+        // }    
+
     } else if (hour < i + 9) {
-        currentState = 'future';
-        try {
-            textareaEl[i].classList.remove('present', 'past');
-            textareaEl[i].classList.add('future');
-        }
-        catch(error){ 
-        }
+        // try {
+            $(textareaEl[i]).removeClass('present', 'past');
+            $(textareaEl[i]).addClass('future');
+        // }
+        // catch(error){ 
+        // }
 
     } else if (hour > i + 9) {
-        currentState = 'past';
-        try {
-            textareaEl[i].classList.remove('present', 'future');
-        }
-        catch(error){ 
-        }
-        textareaEl[i].classList.add('past');
-
+        // try {
+            $(textareaEl[i]).removeClass('present', 'future');
+            $(textareaEl[i]).addClass('past');
+        // }
+        // catch(error){ 
+        // }
     }};
-// }, 5000);
 
-
-
-    for (i = 0; i < 10; i++)
-    textareaEl[i].value = localStorage.getItem(i+9);
+    for (i = 0; i < 10; i++) {
+        if (localStorage.getItem(i + 9)) {
+            textareaEl[i].value = localStorage.getItem(i + 9);
+        }
+    }
